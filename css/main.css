@@ -1,0 +1,53 @@
+
+#header {
+	float: left;
+	font-style: italic;
+    background-color: green;
+	color: pink;
+	font-family: georgia,serif;
+    width: 80%;
+    margin: 1px;
+    position: center;
+}
+
+.group{
+    width: 80%;
+    background: #4b8c9e;
+    position: center;
+    height: 300px;
+}
+
+#add-btn {
+    border-radius(20px);
+    background: #4a9e27;
+    color: #fff;
+    font-size: 2em;
+    font-family: 'Cherry Swash', cursive;
+    font-weight: 700;
+    border: none;
+    padding: 0.2em;
+    margin-bottom: 0.3em;
+    width: 20%;
+}
+
+select {
+    margin: 0 2% 5% 0;
+    width: 40%;
+    height: 60px;
+    float: left;
+}
+
+#add-btn,select {
+    margin-top: 20px;
+}
+
+.check {
+    float: left;
+    width: 39%;
+    height: 200px;
+    background-color: #7f673b;
+    position: relative;
+    margin-top: 30px;
+    border: 1px solid rgb(153, 153, 153);
+    margin: 20px 5px;
+}
