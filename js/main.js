@@ -1,33 +1,46 @@
-function add() {
-	var selectedItem = document.getElementById('electronics').value;
-	if(selectedItem != "") {
-		check(selectedItem);
-		document.getElementById('electronics').value  = "";
-	} else {
-		alert("You must select an item");
+
+var shop = {
+
+	//checkedDiv: $('#checked'),
+	
+	init: function(){
+		$("#checked").on("click", "p input", shop.toRemove);
+		$("#checked").on("click", "p button", shop.deleteItem);
+		 shop.add();
+	},
+
+	add: function() {
+		$('#add-btn').click(function() {
+			console.log("clicked");
+		var selectedItem = $('#electronics').val();
+		if(selectedItem != "") {
+			shop.check(selectedItem);
+			$('#electronics').val("");
+		} else {
+			alert("Oops! Add an item");
+		}
+		});
+	},
+	/*function to show the effect on checkbox*/
+	toRemove: function(){
+		$clickedCheckbox = $(this);
+		if($clickedCheckbox.is(":checked")){
+			$clickedCheckbox.parent().css("background-color","#3f8ba9").css("color", "#3b4c5d");
+		}
+		else
+			{
+			$clickedCheckbox.parent().css("background-color","#e4d48b").css("color", "#5f3bad");
+
+			}
+	},
+	/* function to check */
+	check: function(selectedItem){	
+		$('#checked').append("<p><input type='checkbox'> " + selectedItem + "<button>Delete</button></p>");
+	},
+
+	deleteItem: function(){
+		$(this).parent().remove();
 	}
 }
 
-/* function to check */
-function check(selectedItem){
-	var checkedDiv = document.getElementById('checked');	
-	/*var children = checkedDiv.getElementsByTagName("p");
-	var itemNo = 0;
-	if(children != null && children.length != 0) {
-		var lastChild = children[children.length-1];
-		var lastChildId = lastChild.getAttribute("id");
-		itemNo = parseInt(lastChildId.split("-")[1]) + 1;
-	}*/
-	checkedDiv.innerHTML += "<p>" + selectedItem + "<input type='checkbox' onclick='uncheckAndRemove(this, \""+selectedItem+"\")'></p>";
-}
-
-function checkAndRemove(clickedElement, selectedItem){
-	clickedElement.parentNode.remove();
-	check(selectedItem);
-}
-
-function uncheckAndRemove(clickedElement, selectedItem) {
-	clickedElement.parentNode.remove();
-	var uncheckedDiv = document.getElementById('unchecked');
-	uncheckedDiv.innerHTML += "<p>" + selectedItem + "<input type='checkbox' onclick='checkAndRemove(this, \""+selectedItem+"\")'></p>";
-}
+$(document).ready(shop.init);
