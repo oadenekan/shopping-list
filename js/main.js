@@ -10,7 +10,8 @@ var shop = {
 	},
 
 	add: function() {
-		$('#add-btn').click(function() {
+		$('#add-btn').click(function(event) {
+			event.preventDefault();
 			console.log("clicked");
 		var selectedItem = $('#electronics').val();
 		if(selectedItem != "") {
